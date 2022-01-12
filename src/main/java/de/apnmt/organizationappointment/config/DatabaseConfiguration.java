@@ -1,10 +1,9 @@
 package de.apnmt.organizationappointment.config;
 
-import com.github.cloudyrock.spring.v5.EnableMongock;
 import java.util.ArrayList;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import com.github.cloudyrock.spring.v5.EnableMongock;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import org.springframework.data.mongodb.core.mapping.event.ValidatingMongoEventListener;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -24,7 +22,7 @@ import tech.jhipster.domain.util.JSR310DateConverters.ZonedDateTimeToDateConvert
 @Configuration
 @EnableMongock
 @EnableMongoRepositories("de.apnmt.organizationappointment.common.repository")
-@EntityScan("de.apnmt.organizationappointment.common.domnain")
+@EntityScan("de.apnmt.organizationappointment.common.domain")
 @Profile("!" + JHipsterConstants.SPRING_PROFILE_CLOUD)
 @Import(value = MongoAutoConfiguration.class)
 public class DatabaseConfiguration {

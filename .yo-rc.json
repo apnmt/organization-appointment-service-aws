@@ -5,7 +5,7 @@
     "baseName": "Organizationappointmentservice",
     "packageName": "de.apnmt.organizationappointment",
     "packageFolder": "de/apnmt/organizationappointment",
-    "serverPort": 8081,
+    "serverPort": 8083,
     "serviceDiscoveryType": false,
     "authenticationType": "jwt",
     "cacheProvider": "no",

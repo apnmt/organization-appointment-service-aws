@@ -38,7 +38,7 @@ management:
       base-path: /management
       exposure:
         include:
-          ['configprops', 'env', 'health', 'info', 'jhimetrics', 'jhiopenapigroups', 'logfile', 'loggers', 'prometheus', 'threaddump']
+          [ 'configprops', 'env', 'health', 'info', 'jhimetrics', 'jhiopenapigroups', 'logfile', 'loggers', 'prometheus', 'threaddump' ]
   endpoint:
     health:
       show-details: when_authorized
@@ -171,6 +171,18 @@ jhipster:
     license-url:
   security:
     content-security-policy: "default-src 'self'; frame-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:"
+
+cloud:
+  aws:
+    credentials:
+      access-key: changeit
+      secret-key: changeit
+    region:
+      static: eu-central-1
+    sns:
+      endpoint: http://localhost:4566
+    sqs:
+      endpoint: http://localhost:4566
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

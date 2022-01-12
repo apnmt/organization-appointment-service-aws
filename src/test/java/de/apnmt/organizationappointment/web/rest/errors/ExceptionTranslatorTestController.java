@@ -4,9 +4,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/exception-translator-test")
@@ -18,22 +23,15 @@ public class ExceptionTranslatorTestController {
     }
 
     @PostMapping("/method-argument")
-    public void methodArgument(@Valid @RequestBody TestDTO testDTO) {}
-
-    @GetMapping("/missing-servlet-request-part")
-    public void missingServletRequestPartException(@RequestPart String part) {}
-
-    @GetMapping("/missing-servlet-request-parameter")
-    public void missingServletRequestParameterException(@RequestParam String param) {}
-
-    @GetMapping("/access-denied")
-    public void accessdenied() {
-        throw new AccessDeniedException("test access denied!");
+    public void methodArgument(@Valid @RequestBody TestDTO testDTO) {
     }
 
-    @GetMapping("/unauthorized")
-    public void unauthorized() {
-        throw new BadCredentialsException("test authentication failed!");
+    @GetMapping("/missing-servlet-request-part")
+    public void missingServletRequestPartException(@RequestPart String part) {
+    }
+
+    @GetMapping("/missing-servlet-request-parameter")
+    public void missingServletRequestParameterException(@RequestParam String param) {
     }
 
     @GetMapping("/response-status")
@@ -62,5 +60,6 @@ public class ExceptionTranslatorTestController {
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "test response status")
     @SuppressWarnings("serial")
-    public static class TestResponseStatusException extends RuntimeException {}
+    public static class TestResponseStatusException extends RuntimeException {
+    }
 }

@@ -80,6 +80,18 @@ jhipster:
         base64-secret: NWJkZTg1ODA5NjNjMGNlZDk3MjBiYTMyNzcyYzcwNjZmMDdiOTk0ZGMzZDI3ZDAzYjNiMTZjMTI2ZWZlYWJkZTZlNTg1MTA4YzFjOGY4Y2ZkMjQ5ZjYyOGU5OWJjZTdhYTUwYzkyMzFjMThmMzhjNDQ3MmJlY2ZmNGQ4YjVlYWM=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
+
+cloud:
+  aws:
+    credentials:
+      access-key: changeit
+      secret-key: changeit
+    region:
+      static: us-east-1
+    sns:
+      endpoint: changeit
+    sqs:
+      endpoint: changeit
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
