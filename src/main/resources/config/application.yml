@@ -183,6 +183,11 @@ cloud:
       endpoint: http://localhost:4566
     sqs:
       endpoint: http://localhost:4566
+    logging:
+      cloudwatch:
+        enabled: false
+        queue-size: 512
+        log-stream: organisationservice
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
