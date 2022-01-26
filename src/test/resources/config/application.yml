@@ -90,8 +90,10 @@ cloud:
       static: us-east-1
     sns:
       endpoint: changeit
+      enabled: false
     sqs:
       endpoint: changeit
+      enabled: false
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
