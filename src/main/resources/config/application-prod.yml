@@ -103,6 +103,15 @@ jhipster:
       host: localhost
       port: 5000
       queue-size: 512
+
+cloud:
+  aws:
+    logging:
+      cloudwatch:
+        enabled: true
+    tracing:
+      xray:
+        enabled: true
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
