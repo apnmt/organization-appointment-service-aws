@@ -15,6 +15,7 @@ import io.awspring.cloud.messaging.listener.SqsMessageDeletionPolicy;
 import io.awspring.cloud.messaging.listener.annotation.SqsListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -24,6 +25,9 @@ public class WorkingHourSqsEventConsumer extends WorkingHourEventConsumer {
     };
 
     private final Logger log = LoggerFactory.getLogger(WorkingHourSqsEventConsumer.class);
+
+    @Value("${spring.application.name}")
+    public String appName;
 
     private final ObjectMapper objectMapper;
     private final AwsCloudProperties awsCloudProperties;
@@ -39,7 +43,7 @@ public class WorkingHourSqsEventConsumer extends WorkingHourEventConsumer {
         try {
             log.info("Received event {} from queue {}", message, QueueConstants.WORKING_HOUR_QUEUE);
             ApnmtEvent<WorkingHourEventDTO> event = this.objectMapper.readValue(message, EVENT_TYPE);
-            TracingUtil.beginTracing("WorkingHourSqsEventConsumer.receiveEvent", event.getTraceId(), awsCloudProperties.getTracing().getXRay().isEnabled());
+            TracingUtil.beginTracing(appName, event.getTraceId(), awsCloudProperties.getTracing().getXRay().isEnabled());
             super.receiveEvent(event);
         } catch (JsonProcessingException e) {
             log.error("Malformed message {} for queue {}. Event will be ignored.", message, QueueConstants.WORKING_HOUR_QUEUE);

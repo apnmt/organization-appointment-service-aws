@@ -15,6 +15,7 @@ import io.awspring.cloud.messaging.listener.SqsMessageDeletionPolicy;
 import io.awspring.cloud.messaging.listener.annotation.SqsListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -24,6 +25,9 @@ public class ClosingTimeSqsEventConsumer extends ClosingTimeEventConsumer {
     };
 
     private final Logger log = LoggerFactory.getLogger(ClosingTimeSqsEventConsumer.class);
+
+    @Value("${spring.application.name}")
+    public String appName;
 
     private final ObjectMapper objectMapper;
     private final AwsCloudProperties awsCloudProperties;
@@ -39,7 +43,7 @@ public class ClosingTimeSqsEventConsumer extends ClosingTimeEventConsumer {
         try {
             log.info("Received event {} from queue {}", message, QueueConstants.CLOSING_TIME_QUEUE);
             ApnmtEvent<ClosingTimeEventDTO> event = this.objectMapper.readValue(message, EVENT_TYPE);
-            TracingUtil.beginTracing("ClosingTimeSqsEventConsumer.receiveEvent", event.getTraceId(), awsCloudProperties.getTracing().getXRay().isEnabled());
+            TracingUtil.beginTracing(appName, event.getTraceId(), awsCloudProperties.getTracing().getXRay().isEnabled());
             super.receiveEvent(event);
         } catch (JsonProcessingException e) {
             log.error("Malformed message {} for queue {}. Event will be ignored.", message, QueueConstants.CLOSING_TIME_QUEUE);
