@@ -15,7 +15,7 @@
 
 mongock:
   change-logs-scan-package:
-    - de.apnmt.organizationappointment.config.dbmigrations
+    - de.apnmt.organizationappointment.common.config.dbmigrations
   mongo-db:
     read-concern: local
     write-concern:
