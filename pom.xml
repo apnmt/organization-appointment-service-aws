@@ -100,7 +100,7 @@
         <dependency>
             <groupId>de.apnmt.organizationappointment</groupId>
             <artifactId>organization-appointment-service-common</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
+            <version>0.0.3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>de.apnmt.aws.common</groupId>
